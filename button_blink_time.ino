@@ -1,3 +1,5 @@
+// Blink internal led X times with delay parameter
+
 void blink(int Led, int time,int wait){
   while (time > 0){
     digitalWrite(Led, HIGH);
@@ -20,12 +22,5 @@ void loop()
   if(digitalRead(buton)==LOW) 
   {
     blink(Led,2,250);
-    
-    /*while(1) 
-    {
-      if(digitalRead(buton)==LOW){
-        
-        break ;  
-    }*/
   }
 }
