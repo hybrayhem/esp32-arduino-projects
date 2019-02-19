@@ -1,6 +1,6 @@
 #include <stdlib.h>   
 /*
- Controlling keyes3 clr led module with Hex code using RGB Hex to Decimal conversation
+ Controlling keyes016 led module with Hex code using RGB Hex to Decimal conversation
  */
 int groundpin = 8; // write 0 to get ground
 int greenpin = 9; // select the pin for the green LED
