@@ -1,12 +1,12 @@
 #include <stdlib.h>   
 /*
- Açıklama eklenecek...
+ Controlling keyes3 clr led module with Hex code using RGB Hex to Decimal conversation
  */
 int groundpin = 8; // write 0 to get ground
 int greenpin = 9; // select the pin for the green LED
 int redpin = 10; // select the pin for the red LED
 int bluepin = 11; // select the pin for the blue LED
-String hexString = "7CFC00";
+String hexString = "7CFC00"; // Hex code for color
 
 void setup () {
   pinMode (redpin, OUTPUT);
