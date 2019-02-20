@@ -21,8 +21,8 @@ ported for sparkfun esp32
 
 #include <WiFi.h>
 
-const char* ssid     = "yourssid";
-const char* password = "yourpasswd";
+const char* ssid     = "GL62M";
+const char* password = "MagPiMagPi";
 
 WiFiServer server(80);
 
@@ -93,14 +93,18 @@ void loop(){
         } else if (c != '\r') {  // if you got anything else but a carriage return character,
           currentLine += c;      // add it to the end of the currentLine
         }
-
+        
         // Check to see if the client request was "GET /H" or "GET /L":
         if (currentLine.endsWith("GET /H")) {
-          digitalWrite(5, HIGH);               // GET /H turns the LED on
+          digitalWrite(LED_BUILTIN, HIGH);               // GET /H turns the LED on
         }
         if (currentLine.endsWith("GET /L")) {
-          digitalWrite(5, LOW);                // GET /L turns the LED off
+          digitalWrite(LED_BUILTIN, LOW);                // GET /L turns the LED off
         }
+        /*if (currentLine.endsWith("GET")) {
+          Serial.println("*****************************currentline:"+currentLine);   //not necessary, just for testing client input   
+        }*/
+        
       }
     }
     // close the connection:
