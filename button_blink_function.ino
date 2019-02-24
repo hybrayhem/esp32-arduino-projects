@@ -1,6 +1,6 @@
-// Blink internal led X times with delay parameter
+// Blink internal led X times(int time) with delay(int wait) parameter
 
-void blink(int Led, int time,int wait){
+void blink(int Led, int time,int wait){  
   while (time > 0){
     digitalWrite(Led, HIGH);
     delay(wait);
