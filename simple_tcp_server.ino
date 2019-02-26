@@ -31,18 +31,21 @@ void loop() {
   if (client) {
  
     while (client.connected()) {
- 
+      String data = "";
       while (client.available()>0) {
         char c = client.read();
-        String data = "";
-        data += c; 
+        data = data + c;
 //        client.write(c);
+
         if(data.lastIndexOf(".") < 0) {
-          Serial.println("there isnt dot in last index");
+//          Serial.println("appending data pieces:"+data);
           continue;
           }
-        Serial.println(data);
-      
+        else{
+          data = data.substring(0, data.length()-1);
+          Serial.println("final data: " + data); 
+//          break;
+        }
       delay(10);
     }
  
