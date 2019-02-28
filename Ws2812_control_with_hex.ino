@@ -17,7 +17,7 @@
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 int delayval = 200; // delay for half a second
-String hexString = "7CFC00"; 
+String hexString = "0,0,255"; 
 int r;
 int g;
 int b;
@@ -30,6 +30,7 @@ void setup() {
 void loop() {
 
     // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+  //TODO stringi virgüllerden bölüp int yapacak
     r = hexToDec_R(hexString);
     g = hexToDec_G(hexString)
     b = hexToDec_B(hexString)
