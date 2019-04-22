@@ -11,13 +11,15 @@ BluetoothSerial ESP_BT; //Object for Bluetooth
 int incoming;
 int servoPin = 15;
 
+Servo servo;
+
 void setup() {
   Serial.begin(115200); //Start Serial monitor in 9600
   ESP_BT.begin("ESP32"); //Name of your Bluetooth Signal
   Serial.println("Bluetooth Device is Ready to Pair");
 
-   myservo.setPeriodHertz(50);
-  myservo.attach(servoPin, 1000, 2000); // attaches the servo on pin servoPin to the servo object
+  servo.setPeriodHertz(50);
+  servo.attach(servoPin, 1000, 2000); // attaches the servo on pin servoPin to the servo object
 }
 
 void loop() {
@@ -27,7 +29,7 @@ void loop() {
     incoming = ESP_BT.read(); //Read what we recevive 
     Serial.print("Received:"); Serial.println(incoming);
 
-    myservo.write(incoming.toInt()); 
+    servo.write(incoming); 
   }
   delay(20);
 }
