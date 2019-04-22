@@ -3,18 +3,21 @@
  */
 
 #include "BluetoothSerial.h" //Header File for Serial Bluetooth, will be added by default into Arduino
+#include <ESP32Servo.h>
+
 
 BluetoothSerial ESP_BT; //Object for Bluetooth
 
 int incoming;
-int servo = 15;
+int servoPin = 15;
 
 void setup() {
   Serial.begin(115200); //Start Serial monitor in 9600
   ESP_BT.begin("ESP32"); //Name of your Bluetooth Signal
   Serial.println("Bluetooth Device is Ready to Pair");
 
-  pinMode (servo, OUTPUT);//Specify that LED pin is output
+   myservo.setPeriodHertz(50);
+  myservo.attach(servoPin, 1000, 2000); // attaches the servo on pin servoPin to the servo object
 }
 
 void loop() {
@@ -24,17 +27,7 @@ void loop() {
     incoming = ESP_BT.read(); //Read what we recevive 
     Serial.print("Received:"); Serial.println(incoming);
 
-    if (incoming == 49)
-        {
-        digitalWrite(servo, HIGH);
-        ESP_BT.println("LED turned ON");
-        }
-        
-    if (incoming == 48)
-        {
-        digitalWrite(servo, LOW);
-        ESP_BT.println("LED turned OFF");
-        }     
+    myservo.write(incoming.toInt()); 
   }
   delay(20);
 }
