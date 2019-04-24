@@ -10,8 +10,8 @@ BluetoothSerial ESP_BT; //Object for Bluetooth
 
 int incoming;
 int servo1 = 15;
-int servo2 = 15;
-int servo3 = 15;
+int servo2 = 2;
+int servo3 = 4;
 
 Servo servo_one;
 Servo servo_two;
