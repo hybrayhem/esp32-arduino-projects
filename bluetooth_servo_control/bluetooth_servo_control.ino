@@ -1,17 +1,22 @@
 /*Program to control LED (ON/OFF) from ESP32 using Serial Bluetooth
  * I am using Serial Bluetooth app from google play store for android side.
  */
-
 #include "BluetoothSerial.h" //Header File for Serial Bluetooth, will be added by default into Arduino
 #include <ESP32Servo.h>
 
 
 BluetoothSerial ESP_BT; //Object for Bluetooth
 
-int incoming;
+long incoming;
 int servo1 = 15;
 int servo2 = 2;
 int servo3 = 4;
+String number_string;
+int degree;
+
+bool a;
+bool b;
+bool c;
 
 Servo servo_one;
 Servo servo_two;
@@ -36,12 +41,54 @@ void loop() {
   {
     incoming = ESP_BT.read(); //Read what we recevive 
     Serial.print("Received:"); Serial.println(incoming);
-
-    servo_one.write(incoming); 
-    delay(20);
-    servo_two.write(incoming); 
-    delay(20);
-    servo_three.write(incoming); 
+    if(incoming != 46 && incoming != 97 && incoming != 98 && incoming != 99){
+      
+      incoming = incoming - 48;
+      number_string = number_string + String(incoming);
+      Serial.println(number_string);
+      }
+    else if(incoming != 97){
+      Serial.println("a");
+      a = true;
+      b = false;
+      c = false;
+    }
+    else if(incoming != 98){
+      Serial.println("b");
+      a = false;
+      b = true;
+      c = false;
+    }
+    else if(incoming != 99){
+      Serial.println("c");
+      a = false;
+      b = false;
+      c = true;
+    }
+    else if(incoming != 46){
+        degree = number_string.toInt();
+        Serial.println(degree);
+        number_string = "";
+        //////////////////////////
+        if(a){
+        Serial.println("servo_one:" + degree);
+        servo_one.write(degree); 
+        delay(20);
+        }
+        if(b){
+        Serial.println("servo_two:" + degree);
+        servo_two.write(degree); 
+        delay(20);
+        }
+        if(c){
+        Serial.println("servo_two:" + degree);
+        servo_three.write(degree); 
+        delay(20);
+        }
+        //////////////////////////
+      }
+      
+    }
+  delay(20); 
   }
-  delay(20);
-}
+  
