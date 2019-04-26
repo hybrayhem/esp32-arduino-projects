@@ -1,12 +1,12 @@
 /*
  Controlling a servo position using a potentiometer (variable resistor)
  by Michal Rinott <http://people.interaction-ivrea.it/m.rinott>
-
+ 
  modified on 30 Mar 2019
  by Halil ibrahim ilhan
 */
 
-#include <Servo.h>
+#include <Servo.h> //arduino
 
 Servo myservo;  // create servo object to control a servo
 Servo myservo1;
