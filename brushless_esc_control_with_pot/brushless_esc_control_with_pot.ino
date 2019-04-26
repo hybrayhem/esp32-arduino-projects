@@ -10,7 +10,7 @@ void setup(){
 } 
 
 void loop(){ 
-  val = analogRead(potpin); //İnputumuzun Analog input         
+  val = analogRead(potpin); // İnputumuzun Analog input         
   val = map(val, 0, 1023, 0, 179); 
   Serial.println(val);    
   analogWrite(escpin,val);
