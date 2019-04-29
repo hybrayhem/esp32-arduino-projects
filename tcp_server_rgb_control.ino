@@ -4,8 +4,8 @@
 
 #include <WiFi.h>
  
-const char* ssid = "GL62M";
-const char* password =  "MagPiMagPi";
+const char* ssid = "SSID";
+const char* password =  "PASSWORD";
 
 int r;
 int g;
